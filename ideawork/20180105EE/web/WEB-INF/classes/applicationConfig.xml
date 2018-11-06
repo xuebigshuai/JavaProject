@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <!--通过构造器创建一个Bean实例-->
+         <bean id="user" class="com.xys.model.User"/>
+
+
+        <!--通过工厂方法创建一个Bean实例 首先该类中必须要有一个返回该类的方法-->
+        <bean id="calendar" class="java.util.Calendar" factory-method="getInstance"></bean>
+</beans>

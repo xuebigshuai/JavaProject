@@ -1,0 +1,15 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.100.12.85:3306/pbs_test_0709?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Hongkong&useSSL=false
+    username: admin
+    password: admin
+icss:
+  autocode:
+    enable: true
+    tables: whs_item_labor_cost
+    rootpackage: com.it.labor
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml

@@ -1,0 +1,13 @@
+#global{
+    width: 1060px;
+    margin:60px auto;
+}
+p{
+    margin-bottom: 10px;
+}
+p label{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+    margin-right: 10px;
+}

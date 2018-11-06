@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.icss.auto:mybatis-generator:1.0-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://D:/tools/maven/LocalRepository/com/icss/auto/mybatis-generator/1.0-SNAPSHOT/mybatis-generator-1.0-SNAPSHOT.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://D:/tools/maven/LocalRepository/com/icss/auto/mybatis-generator/1.0-SNAPSHOT/mybatis-generator-1.0-SNAPSHOT-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://D:/tools/maven/LocalRepository/com/icss/auto/mybatis-generator/1.0-SNAPSHOT/mybatis-generator-1.0-SNAPSHOT-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

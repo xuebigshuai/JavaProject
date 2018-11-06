@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://10.100.12.85:3306/pbs_zice?characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Hongkong&useSSL=false
+    username: admin
+    password: admin
+icss:
+  autocode:
+    enable: true
+    tables: pbs_area_info
+    rootpackage: com.icss.it.pbs
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+
+management:
+  security:
+    enabled: false #关掉安全认证
+  port: 8010 #管理端口调整成8088
+  context-path: /monitor #actuator的访问路径
+endpoints:
+  shutdown:
+    enabled: true

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="com.xys"/>
+    <!--<bean id="single" class="com.xys.aop.PerformNeed"/>-->
+    <aop:config>
+        <aop:pointcut id="show" expression="execution(* com.xys.service.imple.Test2.show(..))"/>
+        <aop:aspect ref="single">
+            <aop:before method="beforePeform" pointcut-ref="show"/>
+            <aop:before method="takeSet" pointcut-ref="show"/>
+            <aop:after-returning method="afterPeform" pointcut-ref="show"/>
+            <aop:after-throwing method="error" pointcut-ref="show"/>
+        </aop:aspect>
+    </aop:config>
+</beans>
