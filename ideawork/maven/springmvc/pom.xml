@@ -1,0 +1,72 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>suresh.learn</groupId>
+  <artifactId>springmvc</artifactId>
+  <packaging>war</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>springmvc Maven Webapp</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <!--Generic properties-->
+    <java.version>1.7</java.version>
+    <project.bulid.sourceEncoding>UTF-8</project.bulid.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <!--web-->
+    <jsp.version>2.2</jsp.version>
+    <jstl.version>1.2</jstl.version>
+    <servlet.version>3.1.0</servlet.version>
+    <!--spring-->
+    <spring-framework.version>4.1.5.RELEASE</spring-framework.version>
+    <!--Logging-->
+    <logback.version>1.0.13</logback.version>
+    <mysqlVersion>5.1.42</mysqlVersion>
+    <slf4j.version>1.7.5</slf4j.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>javax</groupId>
+      <artifactId>javaee-web-api</artifactId>
+      <version>7.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <!--spring mvc-->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring-framework.version}</version>
+    </dependency>
+    <!--其他依赖-->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>${jstl.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet.version}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.icss.auto</groupId>
+      <artifactId>mybatis-generator</artifactId>
+      <version>1.0-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.44</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>springmvc</finalName>
+  </build>
+</project>

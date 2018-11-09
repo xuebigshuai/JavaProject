@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.it.po.pbspobaseinfo.mapper.PbsPoBaseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.it.po.pbspobaseinfo.model.PbsPoBaseInfo">
+    <id column="uuid" property="uuid" jdbcType="CHAR"/>
+    <result column="po_no" property="poNo" jdbcType="VARCHAR"/>
+    <result column="out_po_number" property="outPoNumber" jdbcType="VARCHAR"/>
+    <result column="inner_po_number" property="innerPoNumber" jdbcType="VARCHAR"/>
+    <result column="po_name" property="poName" jdbcType="VARCHAR"/>
+    <result column="po_amount" property="poAmount" jdbcType="DECIMAL"/>
+    <result column="deliver_type" property="deliverType" jdbcType="VARCHAR"/>
+    <result column="ben_current_type" property="benCurrentType" jdbcType="INTEGER"/>
+    <result column="situ_current_type" property="situCurrentType" jdbcType="INTEGER"/>
+    <result column="custom_name" property="customName" jdbcType="VARCHAR"/>
+    <result column="corporation" property="corporation" jdbcType="VARCHAR"/>
+    <result column="onoff_site" property="onoffSite" jdbcType="VARCHAR"/>
+  </resultMap>
+  <sql id="Select_List">
+    uuid,po_no,out_po_number,inner_po_number,po_name,
+    po_amount,deliver_type,ben_current_type,situ_current_type,custom_name,corporation,
+    onoff_site
+  </sql>
+  <!--根据主键查询-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select    
+    <include refid="Select_List"/>
+    from pbs_po_base_info    
+    where uuid = #{uuid,jdbcType=CHAR}    
+  </select>
+  <!--根据参数查询-->
+  <select id="selectByParam" parameterType="com.it.po.pbspobaseinfo.model.PbsPoBaseInfo" resultMap="BaseResultMap">
+    select    
+    <include refid="Select_List"/>
+    from pbs_po_base_info    
+    where 1=1    
+    <if test="uuid != null and uuid != ''">
+      AND uuid = #{uuid,jdbcType=CHAR}
+    </if>
+    <if test="poNo != null and poNo != ''">
+      AND po_no = #{poNo,jdbcType=VARCHAR}
+    </if>
+    <if test="outPoNumber != null and outPoNumber != ''">
+      AND out_po_number = #{outPoNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="innerPoNumber != null and innerPoNumber != ''">
+      AND inner_po_number = #{innerPoNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="poName != null and poName != ''">
+      AND po_name = #{poName,jdbcType=VARCHAR}
+    </if>
+    <if test="poAmount != null">
+      AND po_amount = #{poAmount,jdbcType=DECIMAL}
+    </if>
+    <if test="deliverType != null and deliverType != ''">
+      AND deliver_type = #{deliverType,jdbcType=VARCHAR}
+    </if>
+    <if test="benCurrentType != null">
+      AND ben_current_type = #{benCurrentType,jdbcType=INTEGER}
+    </if>
+    <if test="situCurrentType != null">
+      AND situ_current_type = #{situCurrentType,jdbcType=INTEGER}
+    </if>
+    <if test="customName != null and customName != ''">
+      AND custom_name = #{customName,jdbcType=VARCHAR}
+    </if>
+    <if test="corporation != null and corporation != ''">
+      AND corporation = #{corporation,jdbcType=VARCHAR}
+    </if>
+    <if test="onoffSite != null and onoffSite != ''">
+      AND onoff_site = #{onoffSite,jdbcType=VARCHAR}
+    </if>
+  </select>
+  <!--根据主键更新-->
+  <update id="updateByPrimaryKey" parameterType="com.it.po.pbspobaseinfo.model.PbsPoBaseInfo">
+    update pbs_po_base_info    
+    <set>
+      <if test="poNo != null and poNo != ''">
+        po_no = #{poNo,jdbcType=VARCHAR},
+      </if>
+      <if test="outPoNumber != null and outPoNumber != ''">
+        out_po_number = #{outPoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="innerPoNumber != null and innerPoNumber != ''">
+        inner_po_number = #{innerPoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="poName != null and poName != ''">
+        po_name = #{poName,jdbcType=VARCHAR},
+      </if>
+      <if test="poAmount != null">
+        po_amount = #{poAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="deliverType != null and deliverType != ''">
+        deliver_type = #{deliverType,jdbcType=VARCHAR},
+      </if>
+      <if test="benCurrentType != null">
+        ben_current_type = #{benCurrentType,jdbcType=INTEGER},
+      </if>
+      <if test="situCurrentType != null">
+        situ_current_type = #{situCurrentType,jdbcType=INTEGER},
+      </if>
+      <if test="customName != null and customName != ''">
+        custom_name = #{customName,jdbcType=VARCHAR},
+      </if>
+      <if test="corporation != null and corporation != ''">
+        corporation = #{corporation,jdbcType=VARCHAR},
+      </if>
+      <if test="onoffSite != null and onoffSite != ''">
+        onoff_site = #{onoffSite,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=CHAR}    
+  </update>
+  <!--根据主键删除单条-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from pbs_po_base_info
+    where uuid = #{uuid,jdbcType=CHAR}
+  </delete>
+  <!--根据主键批量删除-->
+  <delete id="deleteByPrimaryKeys" parameterType="java.util.List">
+    delete from pbs_po_base_info where uuid in    
+    <foreach collection="list" item="item" open="(" separator="," close=")">
+      #{item,jdbcType=CHAR}
+    </foreach>
+  </delete>
+  <!--单条插入-->
+  <insert id="insert" parameterType="com.it.po.pbspobaseinfo.model.PbsPoBaseInfo">
+    insert into pbs_po_base_info (uuid,po_no,out_po_number,inner_po_number,po_name,
+    po_amount,deliver_type,ben_current_type,situ_current_type,custom_name,corporation,
+    onoff_site)
+    values (#{uuid,jdbcType=CHAR},#{poNo,jdbcType=VARCHAR},#{outPoNumber,jdbcType=VARCHAR},
+    #{innerPoNumber,jdbcType=VARCHAR},#{poName,jdbcType=VARCHAR},#{poAmount,jdbcType=DECIMAL},#{deliverType,jdbcType=VARCHAR},
+    #{benCurrentType,jdbcType=INTEGER},#{situCurrentType,jdbcType=INTEGER},#{customName,jdbcType=VARCHAR},#{corporation,jdbcType=VARCHAR},
+    #{onoffSite,jdbcType=VARCHAR})
+  </insert>
+  <!--批量插入-->
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into pbs_po_base_info (uuid,po_no,out_po_number,inner_po_number,po_name,
+    po_amount,deliver_type,ben_current_type,situ_current_type,custom_name,corporation,
+    onoff_site)values    
+    <foreach collection="list" item="item" separator=",">
+      (#{item.uuid,jdbcType=CHAR},#{item.poNo,jdbcType=VARCHAR},#{item.outPoNumber,jdbcType=VARCHAR},
+      #{item.innerPoNumber,jdbcType=VARCHAR},#{item.poName,jdbcType=VARCHAR},#{item.poAmount,jdbcType=DECIMAL},#{item.deliverType,jdbcType=VARCHAR},
+      #{item.benCurrentType,jdbcType=INTEGER},#{item.situCurrentType,jdbcType=INTEGER},#{item.customName,jdbcType=VARCHAR},#{item.corporation,jdbcType=VARCHAR},
+      #{item.onoffSite,jdbcType=VARCHAR})
+    </foreach>
+  </insert>
+</mapper>

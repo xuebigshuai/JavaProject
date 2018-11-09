@@ -1,0 +1,14 @@
+
+ul,ol,li{
+    list-style: none;
+}
+h1,h2,h3,body{
+    margin:0 auto;
+    padding:0;
+}
+p{
+    margin:0;
+}
+p:last-child{
+    text-align: right;
+}

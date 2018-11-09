@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.it.labor.whsitemlaborcost.mapper.WhsItemLaborCostMapper">
+  <resultMap id="BaseResultMap" type="com.it.labor.whsitemlaborcost.model.WhsItemLaborCost">
+    <id column="uuid" property="uuid" jdbcType="CHAR"/>
+    <result column="year_and_month" property="yearAndMonth" jdbcType="VARCHAR"/>
+    <result column="coa_code" property="coaCode" jdbcType="VARCHAR"/>
+    <result column="item_group" property="itemGroup" jdbcType="VARCHAR"/>
+    <result column="item_lob_group" property="itemLobGroup" jdbcType="VARCHAR"/>
+    <result column="item_lob" property="itemLob" jdbcType="VARCHAR"/>
+    <result column="item_bu" property="itemBu" jdbcType="VARCHAR"/>
+    <result column="item_dd" property="itemDd" jdbcType="VARCHAR"/>
+    <result column="pr_po_number" property="prPoNumber" jdbcType="VARCHAR"/>
+    <result column="out_po_number" property="outPoNumber" jdbcType="VARCHAR"/>
+    <result column="inner_po_number" property="innerPoNumber" jdbcType="VARCHAR"/>
+    <result column="po_name" property="poName" jdbcType="VARCHAR"/>
+    <result column="item_no" property="itemNo" jdbcType="VARCHAR"/>
+    <result column="item_name" property="itemName" jdbcType="VARCHAR"/>
+    <result column="pricing_modeal" property="pricingModeal" jdbcType="INTEGER"/>
+    <result column="manpower_type" property="manpowerType" jdbcType="INTEGER"/>
+    <result column="item_start_date" property="itemStartDate" jdbcType="VARCHAR"/>
+    <result column="item_end_date" property="itemEndDate" jdbcType="VARCHAR"/>
+    <result column="last_name" property="lastName" jdbcType="VARCHAR"/>
+    <result column="ehr_number" property="ehrNumber" jdbcType="VARCHAR"/>
+    <result column="lob_number" property="lobNumber" jdbcType="VARCHAR"/>
+    <result column="input_quantity" property="inputQuantity" jdbcType="DECIMAL"/>
+    <result column="month_start_date" property="monthStartDate" jdbcType="VARCHAR"/>
+    <result column="month_end_date" property="monthEndDate" jdbcType="VARCHAR"/>
+    <result column="financial_input" property="financialInput" jdbcType="DECIMAL"/>
+    <result column="actual_input" property="actualInput" jdbcType="DECIMAL"/>
+    <result column="is_backup" property="isBackup" jdbcType="INTEGER"/>
+    <result column="backup_start_date" property="backupStartDate" jdbcType="VARCHAR"/>
+    <result column="backup_end_date" property="backupEndDate" jdbcType="VARCHAR"/>
+    <result column="backup_input" property="backupInput" jdbcType="DECIMAL"/>
+    <result column="billable_input" property="billableInput" jdbcType="DECIMAL"/>
+    <result column="is_new" property="isNew" jdbcType="VARCHAR"/>
+    <result column="quit_type" property="quitType" jdbcType="INTEGER"/>
+    <result column="job_name" property="jobName" jdbcType="VARCHAR"/>
+    <result column="job_type" property="jobType" jdbcType="VARCHAR"/>
+    <result column="office_area" property="officeArea" jdbcType="VARCHAR"/>
+    <result column="ownership_place" property="ownershipPlace" jdbcType="VARCHAR"/>
+    <result column="employee_category" property="employeeCategory" jdbcType="VARCHAR"/>
+    <result column="employee_coa_code" property="employeeCoaCode" jdbcType="VARCHAR"/>
+    <result column="employee_group" property="employeeGroup" jdbcType="VARCHAR"/>
+    <result column="employee_lob_group" property="employeeLobGroup" jdbcType="VARCHAR"/>
+    <result column="employee_lob" property="employeeLob" jdbcType="VARCHAR"/>
+    <result column="employee_du" property="employeeDu" jdbcType="VARCHAR"/>
+    <result column="employee_dd" property="employeeDd" jdbcType="VARCHAR"/>
+    <result column="onoff_site" property="onoffSite" jdbcType="INTEGER"/>
+    <result column="recruitment_type" property="recruitmentType" jdbcType="VARCHAR"/>
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+    <result column="creater_uuid" property="createrUuid" jdbcType="VARCHAR"/>
+    <result column="creater_name" property="createrName" jdbcType="VARCHAR"/>
+    <result column="modifier_uuid" property="modifierUuid" jdbcType="VARCHAR"/>
+    <result column="modifier_name" property="modifierName" jdbcType="VARCHAR"/>
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    <result column="info_order" property="infoOrder" jdbcType="INTEGER"/>
+    <result column="is_delete" property="isDelete" jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Select_List">
+    uuid,year_and_month,coa_code,item_group,item_lob_group,
+    item_lob,item_bu,item_dd,pr_po_number,out_po_number,inner_po_number,
+    po_name,item_no,item_name,pricing_modeal,manpower_type,item_start_date,
+    item_end_date,last_name,ehr_number,lob_number,input_quantity,month_start_date,
+    month_end_date,financial_input,actual_input,is_backup,backup_start_date,backup_end_date,
+    backup_input,billable_input,is_new,quit_type,job_name,job_type,
+    office_area,ownership_place,employee_category,employee_coa_code,employee_group,employee_lob_group,
+    employee_lob,employee_du,employee_dd,onoff_site,recruitment_type,create_time,
+    creater_uuid,creater_name,modifier_uuid,modifier_name,modify_time,info_order,
+    is_delete
+  </sql>
+  <!--根据主键查询-->
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select    
+    <include refid="Select_List"/>
+    from whs_item_labor_cost    
+    where uuid = #{uuid,jdbcType=CHAR}    
+  </select>
+  <!--根据参数查询-->
+  <select id="selectByParam" parameterType="com.it.labor.whsitemlaborcost.model.WhsItemLaborCost" resultMap="BaseResultMap">
+    select    
+    <include refid="Select_List"/>
+    from whs_item_labor_cost    
+    where 1=1    
+    <if test="uuid != null and uuid != ''">
+      AND uuid = #{uuid,jdbcType=CHAR}
+    </if>
+    <if test="yearAndMonth != null and yearAndMonth != ''">
+      AND year_and_month = #{yearAndMonth,jdbcType=VARCHAR}
+    </if>
+    <if test="coaCode != null and coaCode != ''">
+      AND coa_code = #{coaCode,jdbcType=VARCHAR}
+    </if>
+    <if test="itemGroup != null and itemGroup != ''">
+      AND item_group = #{itemGroup,jdbcType=VARCHAR}
+    </if>
+    <if test="itemLobGroup != null and itemLobGroup != ''">
+      AND item_lob_group = #{itemLobGroup,jdbcType=VARCHAR}
+    </if>
+    <if test="itemLob != null and itemLob != ''">
+      AND item_lob = #{itemLob,jdbcType=VARCHAR}
+    </if>
+    <if test="itemBu != null and itemBu != ''">
+      AND item_bu = #{itemBu,jdbcType=VARCHAR}
+    </if>
+    <if test="itemDd != null and itemDd != ''">
+      AND item_dd = #{itemDd,jdbcType=VARCHAR}
+    </if>
+    <if test="prPoNumber != null and prPoNumber != ''">
+      AND pr_po_number = #{prPoNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="outPoNumber != null and outPoNumber != ''">
+      AND out_po_number = #{outPoNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="innerPoNumber != null and innerPoNumber != ''">
+      AND inner_po_number = #{innerPoNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="poName != null and poName != ''">
+      AND po_name = #{poName,jdbcType=VARCHAR}
+    </if>
+    <if test="itemNo != null and itemNo != ''">
+      AND item_no = #{itemNo,jdbcType=VARCHAR}
+    </if>
+    <if test="itemName != null and itemName != ''">
+      AND item_name = #{itemName,jdbcType=VARCHAR}
+    </if>
+    <if test="pricingModeal != null">
+      AND pricing_modeal = #{pricingModeal,jdbcType=INTEGER}
+    </if>
+    <if test="manpowerType != null">
+      AND manpower_type = #{manpowerType,jdbcType=INTEGER}
+    </if>
+    <if test="itemStartDate != null and itemStartDate != ''">
+      AND item_start_date = #{itemStartDate,jdbcType=VARCHAR}
+    </if>
+    <if test="itemEndDate != null and itemEndDate != ''">
+      AND item_end_date = #{itemEndDate,jdbcType=VARCHAR}
+    </if>
+    <if test="lastName != null and lastName != ''">
+      AND last_name = #{lastName,jdbcType=VARCHAR}
+    </if>
+    <if test="ehrNumber != null and ehrNumber != ''">
+      AND ehr_number = #{ehrNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="lobNumber != null and lobNumber != ''">
+      AND lob_number = #{lobNumber,jdbcType=VARCHAR}
+    </if>
+    <if test="inputQuantity != null">
+      AND input_quantity = #{inputQuantity,jdbcType=DECIMAL}
+    </if>
+    <if test="monthStartDate != null and monthStartDate != ''">
+      AND month_start_date = #{monthStartDate,jdbcType=VARCHAR}
+    </if>
+    <if test="monthEndDate != null and monthEndDate != ''">
+      AND month_end_date = #{monthEndDate,jdbcType=VARCHAR}
+    </if>
+    <if test="financialInput != null">
+      AND financial_input = #{financialInput,jdbcType=DECIMAL}
+    </if>
+    <if test="actualInput != null">
+      AND actual_input = #{actualInput,jdbcType=DECIMAL}
+    </if>
+    <if test="isBackup != null">
+      AND is_backup = #{isBackup,jdbcType=INTEGER}
+    </if>
+    <if test="backupStartDate != null and backupStartDate != ''">
+      AND backup_start_date = #{backupStartDate,jdbcType=VARCHAR}
+    </if>
+    <if test="backupEndDate != null and backupEndDate != ''">
+      AND backup_end_date = #{backupEndDate,jdbcType=VARCHAR}
+    </if>
+    <if test="backupInput != null">
+      AND backup_input = #{backupInput,jdbcType=DECIMAL}
+    </if>
+    <if test="billableInput != null">
+      AND billable_input = #{billableInput,jdbcType=DECIMAL}
+    </if>
+    <if test="isNew != null and isNew != ''">
+      AND is_new = #{isNew,jdbcType=VARCHAR}
+    </if>
+    <if test="quitType != null">
+      AND quit_type = #{quitType,jdbcType=INTEGER}
+    </if>
+    <if test="jobName != null and jobName != ''">
+      AND job_name = #{jobName,jdbcType=VARCHAR}
+    </if>
+    <if test="jobType != null and jobType != ''">
+      AND job_type = #{jobType,jdbcType=VARCHAR}
+    </if>
+    <if test="officeArea != null and officeArea != ''">
+      AND office_area = #{officeArea,jdbcType=VARCHAR}
+    </if>
+    <if test="ownershipPlace != null and ownershipPlace != ''">
+      AND ownership_place = #{ownershipPlace,jdbcType=VARCHAR}
+    </if>
+    <if test="employeeCategory != null and employeeCategory != ''">
+      AND employee_category = #{employeeCategory,jdbcType=VARCHAR}
+    </if>
+    <if test="employeeCoaCode != null and employeeCoaCode != ''">
+      AND employee_coa_code = #{employeeCoaCode,jdbcType=VARCHAR}
+    </if>
+    <if test="employeeGroup != null and employeeGroup != ''">
+      AND employee_group = #{employeeGroup,jdbcType=VARCHAR}
+    </if>
+    <if test="employeeLobGroup != null and employeeLobGroup != ''">
+      AND employee_lob_group = #{employeeLobGroup,jdbcType=VARCHAR}
+    </if>
+    <if test="employeeLob != null and employeeLob != ''">
+      AND employee_lob = #{employeeLob,jdbcType=VARCHAR}
+    </if>
+    <if test="employeeDu != null and employeeDu != ''">
+      AND employee_du = #{employeeDu,jdbcType=VARCHAR}
+    </if>
+    <if test="employeeDd != null and employeeDd != ''">
+      AND employee_dd = #{employeeDd,jdbcType=VARCHAR}
+    </if>
+    <if test="onoffSite != null">
+      AND onoff_site = #{onoffSite,jdbcType=INTEGER}
+    </if>
+    <if test="recruitmentType != null and recruitmentType != ''">
+      AND recruitment_type = #{recruitmentType,jdbcType=VARCHAR}
+    </if>
+    <if test="createTime != null">
+      AND create_time = #{createTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createrUuid != null and createrUuid != ''">
+      AND creater_uuid = #{createrUuid,jdbcType=VARCHAR}
+    </if>
+    <if test="createrName != null and createrName != ''">
+      AND creater_name = #{createrName,jdbcType=VARCHAR}
+    </if>
+    <if test="modifierUuid != null and modifierUuid != ''">
+      AND modifier_uuid = #{modifierUuid,jdbcType=VARCHAR}
+    </if>
+    <if test="modifierName != null and modifierName != ''">
+      AND modifier_name = #{modifierName,jdbcType=VARCHAR}
+    </if>
+    <if test="modifyTime != null">
+      AND modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="infoOrder != null">
+      AND info_order = #{infoOrder,jdbcType=INTEGER}
+    </if>
+    <if test="isDelete != null">
+      AND is_delete = #{isDelete,jdbcType=INTEGER}
+    </if>
+  </select>
+  <!--根据主键更新-->
+  <update id="updateByPrimaryKey" parameterType="com.it.labor.whsitemlaborcost.model.WhsItemLaborCost">
+    update whs_item_labor_cost    
+    <set>
+      <if test="yearAndMonth != null and yearAndMonth != ''">
+        year_and_month = #{yearAndMonth,jdbcType=VARCHAR},
+      </if>
+      <if test="coaCode != null and coaCode != ''">
+        coa_code = #{coaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="itemGroup != null and itemGroup != ''">
+        item_group = #{itemGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="itemLobGroup != null and itemLobGroup != ''">
+        item_lob_group = #{itemLobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="itemLob != null and itemLob != ''">
+        item_lob = #{itemLob,jdbcType=VARCHAR},
+      </if>
+      <if test="itemBu != null and itemBu != ''">
+        item_bu = #{itemBu,jdbcType=VARCHAR},
+      </if>
+      <if test="itemDd != null and itemDd != ''">
+        item_dd = #{itemDd,jdbcType=VARCHAR},
+      </if>
+      <if test="prPoNumber != null and prPoNumber != ''">
+        pr_po_number = #{prPoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="outPoNumber != null and outPoNumber != ''">
+        out_po_number = #{outPoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="innerPoNumber != null and innerPoNumber != ''">
+        inner_po_number = #{innerPoNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="poName != null and poName != ''">
+        po_name = #{poName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemNo != null and itemNo != ''">
+        item_no = #{itemNo,jdbcType=VARCHAR},
+      </if>
+      <if test="itemName != null and itemName != ''">
+        item_name = #{itemName,jdbcType=VARCHAR},
+      </if>
+      <if test="pricingModeal != null">
+        pricing_modeal = #{pricingModeal,jdbcType=INTEGER},
+      </if>
+      <if test="manpowerType != null">
+        manpower_type = #{manpowerType,jdbcType=INTEGER},
+      </if>
+      <if test="itemStartDate != null and itemStartDate != ''">
+        item_start_date = #{itemStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="itemEndDate != null and itemEndDate != ''">
+        item_end_date = #{itemEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null and lastName != ''">
+        last_name = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="ehrNumber != null and ehrNumber != ''">
+        ehr_number = #{ehrNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="lobNumber != null and lobNumber != ''">
+        lob_number = #{lobNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="inputQuantity != null">
+        input_quantity = #{inputQuantity,jdbcType=DECIMAL},
+      </if>
+      <if test="monthStartDate != null and monthStartDate != ''">
+        month_start_date = #{monthStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="monthEndDate != null and monthEndDate != ''">
+        month_end_date = #{monthEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="financialInput != null">
+        financial_input = #{financialInput,jdbcType=DECIMAL},
+      </if>
+      <if test="actualInput != null">
+        actual_input = #{actualInput,jdbcType=DECIMAL},
+      </if>
+      <if test="isBackup != null">
+        is_backup = #{isBackup,jdbcType=INTEGER},
+      </if>
+      <if test="backupStartDate != null and backupStartDate != ''">
+        backup_start_date = #{backupStartDate,jdbcType=VARCHAR},
+      </if>
+      <if test="backupEndDate != null and backupEndDate != ''">
+        backup_end_date = #{backupEndDate,jdbcType=VARCHAR},
+      </if>
+      <if test="backupInput != null">
+        backup_input = #{backupInput,jdbcType=DECIMAL},
+      </if>
+      <if test="billableInput != null">
+        billable_input = #{billableInput,jdbcType=DECIMAL},
+      </if>
+      <if test="isNew != null and isNew != ''">
+        is_new = #{isNew,jdbcType=VARCHAR},
+      </if>
+      <if test="quitType != null">
+        quit_type = #{quitType,jdbcType=INTEGER},
+      </if>
+      <if test="jobName != null and jobName != ''">
+        job_name = #{jobName,jdbcType=VARCHAR},
+      </if>
+      <if test="jobType != null and jobType != ''">
+        job_type = #{jobType,jdbcType=VARCHAR},
+      </if>
+      <if test="officeArea != null and officeArea != ''">
+        office_area = #{officeArea,jdbcType=VARCHAR},
+      </if>
+      <if test="ownershipPlace != null and ownershipPlace != ''">
+        ownership_place = #{ownershipPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeCategory != null and employeeCategory != ''">
+        employee_category = #{employeeCategory,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeCoaCode != null and employeeCoaCode != ''">
+        employee_coa_code = #{employeeCoaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeGroup != null and employeeGroup != ''">
+        employee_group = #{employeeGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeLobGroup != null and employeeLobGroup != ''">
+        employee_lob_group = #{employeeLobGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeLob != null and employeeLob != ''">
+        employee_lob = #{employeeLob,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeDu != null and employeeDu != ''">
+        employee_du = #{employeeDu,jdbcType=VARCHAR},
+      </if>
+      <if test="employeeDd != null and employeeDd != ''">
+        employee_dd = #{employeeDd,jdbcType=VARCHAR},
+      </if>
+      <if test="onoffSite != null">
+        onoff_site = #{onoffSite,jdbcType=INTEGER},
+      </if>
+      <if test="recruitmentType != null and recruitmentType != ''">
+        recruitment_type = #{recruitmentType,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createrUuid != null and createrUuid != ''">
+        creater_uuid = #{createrUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="createrName != null and createrName != ''">
+        creater_name = #{createrName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierUuid != null and modifierUuid != ''">
+        modifier_uuid = #{modifierUuid,jdbcType=VARCHAR},
+      </if>
+      <if test="modifierName != null and modifierName != ''">
+        modifier_name = #{modifierName,jdbcType=VARCHAR},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="infoOrder != null">
+        info_order = #{infoOrder,jdbcType=INTEGER},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where uuid = #{uuid,jdbcType=CHAR}    
+  </update>
+  <!--根据主键删除单条-->
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from whs_item_labor_cost
+    where uuid = #{uuid,jdbcType=CHAR}
+  </delete>
+  <!--根据主键批量删除-->
+  <delete id="deleteByPrimaryKeys" parameterType="java.util.List">
+    delete from whs_item_labor_cost where uuid in    
+    <foreach collection="list" item="item" open="(" separator="," close=")">
+      #{item,jdbcType=CHAR}
+    </foreach>
+  </delete>
+  <!--单条插入-->
+  <insert id="insert" parameterType="com.it.labor.whsitemlaborcost.model.WhsItemLaborCost">
+    insert into whs_item_labor_cost (uuid,year_and_month,coa_code,item_group,item_lob_group,
+    item_lob,item_bu,item_dd,pr_po_number,out_po_number,inner_po_number,
+    po_name,item_no,item_name,pricing_modeal,manpower_type,item_start_date,
+    item_end_date,last_name,ehr_number,lob_number,input_quantity,month_start_date,
+    month_end_date,financial_input,actual_input,is_backup,backup_start_date,backup_end_date,
+    backup_input,billable_input,is_new,quit_type,job_name,job_type,
+    office_area,ownership_place,employee_category,employee_coa_code,employee_group,employee_lob_group,
+    employee_lob,employee_du,employee_dd,onoff_site,recruitment_type,create_time,
+    creater_uuid,creater_name,modifier_uuid,modifier_name,modify_time,info_order,
+    is_delete)
+    values (#{uuid,jdbcType=CHAR},#{yearAndMonth,jdbcType=VARCHAR},#{coaCode,jdbcType=VARCHAR},
+    #{itemGroup,jdbcType=VARCHAR},#{itemLobGroup,jdbcType=VARCHAR},#{itemLob,jdbcType=VARCHAR},#{itemBu,jdbcType=VARCHAR},
+    #{itemDd,jdbcType=VARCHAR},#{prPoNumber,jdbcType=VARCHAR},#{outPoNumber,jdbcType=VARCHAR},#{innerPoNumber,jdbcType=VARCHAR},
+    #{poName,jdbcType=VARCHAR},#{itemNo,jdbcType=VARCHAR},#{itemName,jdbcType=VARCHAR},#{pricingModeal,jdbcType=INTEGER},
+    #{manpowerType,jdbcType=INTEGER},#{itemStartDate,jdbcType=VARCHAR},#{itemEndDate,jdbcType=VARCHAR},#{lastName,jdbcType=VARCHAR},
+    #{ehrNumber,jdbcType=VARCHAR},#{lobNumber,jdbcType=VARCHAR},#{inputQuantity,jdbcType=DECIMAL},#{monthStartDate,jdbcType=VARCHAR},
+    #{monthEndDate,jdbcType=VARCHAR},#{financialInput,jdbcType=DECIMAL},#{actualInput,jdbcType=DECIMAL},#{isBackup,jdbcType=INTEGER},
+    #{backupStartDate,jdbcType=VARCHAR},#{backupEndDate,jdbcType=VARCHAR},#{backupInput,jdbcType=DECIMAL},#{billableInput,jdbcType=DECIMAL},
+    #{isNew,jdbcType=VARCHAR},#{quitType,jdbcType=INTEGER},#{jobName,jdbcType=VARCHAR},#{jobType,jdbcType=VARCHAR},
+    #{officeArea,jdbcType=VARCHAR},#{ownershipPlace,jdbcType=VARCHAR},#{employeeCategory,jdbcType=VARCHAR},#{employeeCoaCode,jdbcType=VARCHAR},
+    #{employeeGroup,jdbcType=VARCHAR},#{employeeLobGroup,jdbcType=VARCHAR},#{employeeLob,jdbcType=VARCHAR},#{employeeDu,jdbcType=VARCHAR},
+    #{employeeDd,jdbcType=VARCHAR},#{onoffSite,jdbcType=INTEGER},#{recruitmentType,jdbcType=VARCHAR},#{createTime,jdbcType=TIMESTAMP},
+    #{createrUuid,jdbcType=VARCHAR},#{createrName,jdbcType=VARCHAR},#{modifierUuid,jdbcType=VARCHAR},#{modifierName,jdbcType=VARCHAR},
+    #{modifyTime,jdbcType=TIMESTAMP},#{infoOrder,jdbcType=INTEGER},#{isDelete,jdbcType=INTEGER})
+  </insert>
+  <!--批量插入-->
+  <insert id="insertBatch" parameterType="java.util.List">
+    insert into whs_item_labor_cost (uuid,year_and_month,coa_code,item_group,item_lob_group,
+    item_lob,item_bu,item_dd,pr_po_number,out_po_number,inner_po_number,
+    po_name,item_no,item_name,pricing_modeal,manpower_type,item_start_date,
+    item_end_date,last_name,ehr_number,lob_number,input_quantity,month_start_date,
+    month_end_date,financial_input,actual_input,is_backup,backup_start_date,backup_end_date,
+    backup_input,billable_input,is_new,quit_type,job_name,job_type,
+    office_area,ownership_place,employee_category,employee_coa_code,employee_group,employee_lob_group,
+    employee_lob,employee_du,employee_dd,onoff_site,recruitment_type,create_time,
+    creater_uuid,creater_name,modifier_uuid,modifier_name,modify_time,info_order,
+    is_delete)values    
+    <foreach collection="list" item="item" separator=",">
+      (#{item.uuid,jdbcType=CHAR},#{item.yearAndMonth,jdbcType=VARCHAR},#{item.coaCode,jdbcType=VARCHAR},
+      #{item.itemGroup,jdbcType=VARCHAR},#{item.itemLobGroup,jdbcType=VARCHAR},#{item.itemLob,jdbcType=VARCHAR},#{item.itemBu,jdbcType=VARCHAR},
+      #{item.itemDd,jdbcType=VARCHAR},#{item.prPoNumber,jdbcType=VARCHAR},#{item.outPoNumber,jdbcType=VARCHAR},#{item.innerPoNumber,jdbcType=VARCHAR},
+      #{item.poName,jdbcType=VARCHAR},#{item.itemNo,jdbcType=VARCHAR},#{item.itemName,jdbcType=VARCHAR},#{item.pricingModeal,jdbcType=INTEGER},
+      #{item.manpowerType,jdbcType=INTEGER},#{item.itemStartDate,jdbcType=VARCHAR},#{item.itemEndDate,jdbcType=VARCHAR},#{item.lastName,jdbcType=VARCHAR},
+      #{item.ehrNumber,jdbcType=VARCHAR},#{item.lobNumber,jdbcType=VARCHAR},#{item.inputQuantity,jdbcType=DECIMAL},#{item.monthStartDate,jdbcType=VARCHAR},
+      #{item.monthEndDate,jdbcType=VARCHAR},#{item.financialInput,jdbcType=DECIMAL},#{item.actualInput,jdbcType=DECIMAL},#{item.isBackup,jdbcType=INTEGER},
+      #{item.backupStartDate,jdbcType=VARCHAR},#{item.backupEndDate,jdbcType=VARCHAR},#{item.backupInput,jdbcType=DECIMAL},#{item.billableInput,jdbcType=DECIMAL},
+      #{item.isNew,jdbcType=VARCHAR},#{item.quitType,jdbcType=INTEGER},#{item.jobName,jdbcType=VARCHAR},#{item.jobType,jdbcType=VARCHAR},
+      #{item.officeArea,jdbcType=VARCHAR},#{item.ownershipPlace,jdbcType=VARCHAR},#{item.employeeCategory,jdbcType=VARCHAR},#{item.employeeCoaCode,jdbcType=VARCHAR},
+      #{item.employeeGroup,jdbcType=VARCHAR},#{item.employeeLobGroup,jdbcType=VARCHAR},#{item.employeeLob,jdbcType=VARCHAR},#{item.employeeDu,jdbcType=VARCHAR},
+      #{item.employeeDd,jdbcType=VARCHAR},#{item.onoffSite,jdbcType=INTEGER},#{item.recruitmentType,jdbcType=VARCHAR},#{item.createTime,jdbcType=TIMESTAMP},
+      #{item.createrUuid,jdbcType=VARCHAR},#{item.createrName,jdbcType=VARCHAR},#{item.modifierUuid,jdbcType=VARCHAR},#{item.modifierName,jdbcType=VARCHAR},
+      #{item.modifyTime,jdbcType=TIMESTAMP},#{item.infoOrder,jdbcType=INTEGER},#{item.isDelete,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+</mapper>

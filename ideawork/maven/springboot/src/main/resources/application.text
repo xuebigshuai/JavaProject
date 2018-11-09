@@ -1,0 +1,5 @@
+book.author=xueyushuai
+book.name=spring boot
+icss.autocode.enable: true
+icss.autocode.tables: pbs_area_info
+icss.autocode.rootpackage: com.icss.it.pbs
